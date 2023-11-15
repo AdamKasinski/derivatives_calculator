@@ -1,7 +1,5 @@
-package src.main.java;
 import java.time.LocalDate;
-
-import src.main.java.derivatives.Bond;
+import derivatives.Bond;
 
 public class Main {
     public static void main(String[] args) {
