@@ -1,12 +1,21 @@
-import java.time.LocalDate;
+import java.util.List;
+
+import dbConnector.BondManager;
+import dbConnector.HibernateUtil;
 import derivatives.Bond;
 
 public class Main {
     public static void main(String[] args) {
-        Bond bond = new Bond("bond1", 100.0, 
-                            0.02, 4, 
-                            LocalDate.of(2023,2,20), 
-                            LocalDate.of(2027,2,20));
-        System.out.println(bond.valuate(LocalDate.of(2023,2,20)));
+
+        BondManager bondManager = new BondManager();
+
+
+        String bondId = "bond1";
+        List<Bond> bonds = bondManager.getBondById(bondId);
+
+        for ( Bond bond : bonds) {
+            System.out.println( "Bond " + bond.getId() + " " + bond.getNotional() + " " + bond.getInterestRate());}
+
+        HibernateUtil.shutdown();
     }
 }
